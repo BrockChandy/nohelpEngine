@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
-#include "playerconfig.h"
+//#include "playerconfig.h"
+#include <stdio.h>
+#include "sqlite3.h"
 using namespace std;
 
 //playerOne info
@@ -113,7 +115,7 @@ string findEnd(int x) {
     //else
     return "th";
 }
-int main(){
+int main(int argc, char** argv){
     /*auto playerList = vector<Player*>();
     
     playerList.push_back(new Player(1,"Dean", "Henderson", "Crystal Palace", "GK", 3.5));
@@ -167,6 +169,22 @@ int main(){
     //push_front
   */
 
+    sqlite3* DB;
+    int exit = 0;
+    exit = sqlite3_open("playerDatabase.db", &DB);
+
+    if (exit){
+        cerr << "Error opening DB " << sqlite3_errmsg(DB) << endl;
+        return (-1);
+    }
+    else 
+    cout << "Opened Database Successfully" << endl;
+    sqlite3_close(DB);
+    return 0;
+    
+
+    /*
+
 
     cout << "Choose your GK!" << endl;
 
@@ -175,6 +193,11 @@ int main(){
         cout << playerList[i].playerRating << ", " <<  playerList[i].playerFirstName << " " << playerList[i].playerLastName;
         cout << endl;
     }
+
+
+        */
+
+
         // the goal is to compare to get the best player at each position automatically
         // if a position needs multiple positions, the goal is to not allow duplicates
         // also why does LB go to the bottom?
@@ -191,8 +214,8 @@ int main(){
         cout << playerList[i]->playerFirstName << " " << playerList[i]->playerLastName << ", " << playerList[i]->number << ", " << playerList[i]->playerPosition << ", " << playerList[i]->playerRating;
         cout << endl;
     }*/
-    }
-    cout << endl;
+   // }
+   // cout << endl;
     //cout << fourthreethree;
 
     //cout << playerList[0].playerName << endl;
@@ -218,5 +241,5 @@ int main(){
     //     cout << "No goal! " << "\n" ;
     // }
     // }
-    return 0;
+   // return 0;
 }
