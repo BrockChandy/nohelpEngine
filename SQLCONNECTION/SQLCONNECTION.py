@@ -1,6 +1,5 @@
 # SQLCONNECTION.py
-import mysql.connector
-
+from db_connection import db
 # 1. Establish the connection
 
 
