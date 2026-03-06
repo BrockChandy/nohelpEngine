@@ -7,7 +7,7 @@ int main() {
     std::string pythonOutput = "";
     char buffer[128];
 
-    FILE* pipe = _popen("python SQLCONNNECTION.py", "r");
+    FILE* pipe = _popen("python ..\\SQLCONNECTION\\SQLCONNECTION.py", "r");
 
     if (!pipe) {
         std::cerr << "Could not run script" << std::endl;
