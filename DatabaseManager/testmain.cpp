@@ -2,6 +2,9 @@
 //
 
 #include <iostream>
+#include <vector>
+#include <sstream> 
+
 
 int main() {
     std::string pythonOutput = "";
@@ -19,7 +22,30 @@ int main() {
     }
     _pclose(pipe);
 
-    std::cout << pythonOutput << std::endl;
+     // Remove any trailing newline from pythonOutput
+    if (!pythonOutput.empty() && pythonOutput.back() == '\n') {
+        pythonOutput.pop_back();
+    }
+
+    // Split pythonOutput by commas into a vector
+    std::vector<std::string> outputVector;
+    std::stringstream ss(pythonOutput);
+    std::string item;
+    while (std::getline(ss, item, ',')) {
+        // Optionally trim whitespace
+        size_t start = item.find_first_not_of(" \t");
+        size_t end = item.find_last_not_of(" \t");
+        if (start != std::string::npos && end != std::string::npos) {
+            outputVector.push_back(item.substr(start, end - start + 1));
+        } else {
+            outputVector.push_back(""); // for empty items
+        }
+    }
+
+    // Print vector out
+    for (const auto& val : outputVector) {
+        std::cout << val << std::endl;
+    }
 
     return 0;
 }
