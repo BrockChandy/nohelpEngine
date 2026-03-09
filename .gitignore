@@ -1,1 +1,8 @@
 SQLCONNECTION/db_connection.py
+
+SQLCONNECTION/sqltools_connection.txt
+
+DB Objects/ConnectionCredentials.h
+
+libmysql.dll
+FM_Engine.exe
