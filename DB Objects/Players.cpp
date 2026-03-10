@@ -26,7 +26,8 @@ std::vector<Player> Players::getAllPlayers(MYSQL* conn) {
         p.preferred_foot = row[7];
         p.personality = row[8];
         p.position = row[9];
-        p.team_id = atoi(row[10]);
+        p.jersey_number = atoi(row[10]);
+        p.team_id = atoi(row[11]);
 
         players.push_back(p);
     }
@@ -63,6 +64,7 @@ Players::ColumnWidths Players::calculateColumnWidths(const std::vector<Player>& 
     w.foot = std::string("Foot").length();
     w.personality = std::string("Personality").length();
     w.position = std::string("Position").length();
+    w.jersey = std::string("Jersey").length();
     w.team = 4;
 
     for (const auto& p : players) {
@@ -77,6 +79,7 @@ Players::ColumnWidths Players::calculateColumnWidths(const std::vector<Player>& 
         w.foot = std::max(w.foot, p.preferred_foot.length());
         w.personality = std::max(w.personality, p.personality.length());
         w.position = std::max(w.position, p.position.length());
+        w.jersey = std::max(w.jersey, std::to_string(p.jersey_number).length());
         w.team = std::max(w.team, std::to_string(p.team_id).length());
     }
 
@@ -96,6 +99,7 @@ void Players::printHeader(const ColumnWidths& w) {
               << std::setw(w.foot + 2) << "Foot"
               << std::setw(w.personality + 2) << "Personality"
               << std::setw(w.position + 2) << "Position"
+              << std::setw(w.jersey + 2) << "Jersey"
               << std::setw(w.team + 2) << "Team"
               << std::endl;
 
@@ -103,7 +107,7 @@ void Players::printHeader(const ColumnWidths& w) {
         w.id + w.first + w.last + w.dob +
         w.nationality + w.height + w.weight +
         w.foot + w.personality + w.position +
-        w.team + 22;
+        w.jersey + w.team + 22;
 
     std::cout << std::string(total_width, '-') << std::endl;
 }
@@ -121,6 +125,7 @@ void Players::printPlayerRow(const Player& p, const ColumnWidths& w) {
               << std::setw(w.foot + 2) << p.preferred_foot
               << std::setw(w.personality + 2) << p.personality
               << std::setw(w.position + 2) << p.position
+              << std::setw(w.jersey + 2) << p.jersey_number
               << std::setw(w.team + 2) << p.team_id
               << std::endl;
 }

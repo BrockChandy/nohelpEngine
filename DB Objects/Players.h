@@ -19,6 +19,7 @@ struct Player {
         std::string preferred_foot;
         std::string personality;
         std::string position;
+        int jersey_number;
         int team_id;
     };
     
@@ -41,6 +42,7 @@ private:
         size_t foot;
         size_t personality;
         size_t position;
+        size_t jersey;
         size_t team;
     };
 
