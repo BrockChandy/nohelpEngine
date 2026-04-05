@@ -14,17 +14,20 @@ int main()
     int goalamount = 0;
     int shotamount = 0;
 
-   // std::cout << "Select 1: Toe Bash, 2: Finesse, or 3: Trivela" << std::endl;
+   // std::cout << "Select 0: Toe Bash, 1: Finesse, or 2: Trivela" << std::endl;
    // std::cin >> shotSelection;
    for (int i = 0; i < 1; i++){
     srand(static_cast<unsigned int>(time(0)));
     int shotselection = rand() % 2;
-    std::cout << "Shot is: " << shotselection << std::endl;
+    std::cout << "Shot is: " << shotselection << std::endl << std::endl;
     if (shotselection == 0){
     while (shotamount < 10) {
         srand(static_cast<unsigned int>(time(0)));
         int shotrating = rand() % 21;
         int saverating = rand() % 21;
+        if (shotrating == 0){
+            std::cout << "That shot was so simple and now a car alarm is going off" << std::endl;
+        }
         if (shotrating > saverating) {
             std::cout << "GOAL, shot was " << shotrating << " and save is " << saverating << std::endl;
             goalamount = goalamount + 1;
@@ -47,6 +50,10 @@ int main()
         srand(static_cast<unsigned int>(time(0)));
         int shotrating = rand() % 11;
         int saverating = rand() % 21;
+        if (shotrating == 0){
+        std::cout << "He tried to get some finesse on it and now the manager is looking to sub him off" << std::endl;
+        std::cout << "That might be the worst shot I have ever witnessed, we are not sure if the ball is still in the stadium" << std::endl;
+        }
         if (shotrating > saverating) {
             std::cout << "GOAL, shot was " << shotrating << " and save is " << saverating << std::endl;
             goalamount = goalamount + 1;
@@ -70,7 +77,7 @@ int main()
         int shotrating = rand() % 6;
         int saverating = rand() % 21;
 
-        if (shotrating <= 3) {
+        if (shotrating == 0) {
             std::cout << "That might be the worst shot I have ever witnessed, we are not sure if the ball is still in the stadium" << std::endl;
         }
 
