@@ -26,18 +26,26 @@ int main()
         srand(static_cast<unsigned int>(time(0)));
         int shotrating1 = rand() % 21;
         int saverating1 = rand() % 21;
-        if (shotrating1 == 0){
+        /*if (shotrating1 == 0){
             std::cout << "That shot was so simple and now a car alarm is going off" << std::endl;
-        }
+        }*/
         if (shotrating1 > saverating1) {  
+            std::cout << "He walks up to take the shot..." << std::endl;
+           std::cout << std::endl;
+           pause(3000);
             goalamount1 = goalamount1 + 1;
             shotamount1 = shotamount1 + 1;
             std::cout << "GOAL for team 1, score is " << goalamount1 << " to " << goalamount2 << " " << shotamount1 << std::endl; 
+            std::cout << std::endl;
         }
         else {
            // std::cout << "NO GOAL, shot was " << shotrating1 << " and save is " << saverating1 << std::endl;
+           std::cout << "He walks up to take the shot..." << std::endl;
+           std::cout << std::endl;
+           pause(3000);
            shotamount1 = shotamount1 + 1;
            std::cout << "NO GOAL for team 1, score is " << goalamount1 << " to " << goalamount2 << " " << shotamount1 << std::endl; 
+           std::cout << std::endl;
         }
         /*std::cout << std::endl;
         std::cout << "Goals scored for team 1: " << goalamount1 << std::endl;
@@ -45,8 +53,12 @@ int main()
         std::cout << "Shots attempted for team 1: " << shotamount1 << std::endl;
         std::cout << std::endl;*/
         pause(2000);
-        if (goalamount1 < goalamount2 && shotamount1 == 5 || goalamount1 == 3 && goalamount2 == 0 && shotamount1 == 3 || goalamount1 == 4 && goalamount2 == 1 && shotamount1 == 4){
+        if (goalamount1 < goalamount2 && shotamount1 == 5){
             std::cout << "Team 2 has won " << goalamount2 << " to " << goalamount1 << std::endl;
+            return 0;
+        }
+        else if (goalamount1 >= 4 && goalamount2 <= 1 && shotamount1 >= 4 || goalamount1 >= 3 && goalamount2 <= 1 && shotamount1 == 5){
+            std::cout << "Team 1 has won " << goalamount1 << " to " << goalamount2 << std::endl;
             return 0;
         }
         else{
@@ -58,17 +70,25 @@ int main()
         srand(static_cast<unsigned int>(time(0)));
         int shotrating2 = rand() % 21;
         int saverating2 = rand() % 21;
-        if (shotrating2 == 0){
+        /*if (shotrating2 == 0){
             std::cout << "That shot was so simple and now a car alarm is going off" << std::endl;
-        }
+        }*/
         if (shotrating2 > saverating2) {
+             std::cout << "He walks up to take the shot..." << std::endl;
+           std::cout << std::endl;
+           pause(3000);
             goalamount2 = goalamount2 + 1;
             shotamount2 = shotamount2 + 1;
             std::cout << "GOAL for team 2, score is " << goalamount1 << " to " << goalamount2 << " " << shotamount2 << std::endl; 
+            std::cout << std::endl;
         }
         else {
+             std::cout << "He walks up to take the shot..." << std::endl;
+           std::cout << std::endl;
+           pause(3000);
             shotamount2 = shotamount2 + 1;
             std::cout << "NO GOAL for team 2, score is " << goalamount1 << " to " << goalamount2 << " " << shotamount2 << std::endl; 
+            std::cout << std::endl;
         }
         /*std::cout << std::endl;
         std::cout << "Goals scored for team 2: " << goalamount2 << std::endl;
@@ -76,8 +96,12 @@ int main()
         std::cout << "Shots attempted for team 2: " << shotamount2 << std::endl;
         std::cout << std::endl;*/
         pause(2000);
-        if (goalamount2 == 5){
+        if (shotamount2 >= 5 && goalamount2 > goalamount1 || goalamount2 == 3 && goalamount1 == 0 && shotamount2 >= 3){
             std::cout << "Team 2 has won " << goalamount2 << " to " << goalamount1  << std::endl;
+            return 0;
+        }
+        else if (goalamount1 >= 3 && goalamount2 == 0 && shotamount2 >= 3 || shotamount2 >= 5 && goalamount2 < goalamount1){
+            std::cout << "Team 1 has won " << goalamount1 << " to " << goalamount2  << std::endl;
             return 0;
         }
         else {
