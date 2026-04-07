@@ -3,6 +3,7 @@
 #include <thread>
 #include <chrono>
 #include <iostream>
+#include <string>
 
 void pause(int ms) {
     std::this_thread::sleep_for(std::chrono::milliseconds(ms));
@@ -11,6 +12,8 @@ void pause(int ms) {
 int main()
 {
 //First iteration of engine
+    std::string team1 = "Palace";
+    std::string team2 = "Brighton";
     int goalamount1 = 0;
     int shotamount1 = 0;
     int goalamount2 = 0;
@@ -29,10 +32,22 @@ int main()
         /*if (shotrating1 == 0){
             std::cout << "That shot was so simple and now a car alarm is going off" << std::endl;
         }*/
-        if (shotrating1 > saverating1) {  
-            std::cout << "He walks up to take the shot..." << std::endl;
+       if (goalamount2 == 3 && goalamount1 == 0 && shotamount1 == 3 || goalamount2 == 3 && goalamount1 == 1 && shotamount1 >= 3){
+           std::cout << "This is to keep the team and fans hopes alive..." << std::endl;
            std::cout << std::endl;
            pause(3000);
+       }
+       if (goalamount1 > goalamount2 && shotamount1 == 4 ||
+         goalamount1 == 3 && goalamount2 == 1 && shotamount1 >= 3 ||
+         goalamount1 == 2 && goalamount2 == 0 && shotamount1 >= 3){
+        std::cout << "If he scores here, the fans will need to be held back from the pitch!" << std::endl;
+       }
+       else {
+        std::cout << "He walks up to take the shot..." << std::endl;
+           std::cout << std::endl;
+           pause(3000);
+       }
+        if (shotrating1 > saverating1) {  
             goalamount1 = goalamount1 + 1;
             shotamount1 = shotamount1 + 1;
             std::cout << "GOAL for team 1, score is " << goalamount1 << " to " << goalamount2 << " " << shotamount1 << std::endl; 
@@ -40,9 +55,6 @@ int main()
         }
         else {
            // std::cout << "NO GOAL, shot was " << shotrating1 << " and save is " << saverating1 << std::endl;
-           std::cout << "He walks up to take the shot..." << std::endl;
-           std::cout << std::endl;
-           pause(3000);
            shotamount1 = shotamount1 + 1;
            std::cout << "NO GOAL for team 1, score is " << goalamount1 << " to " << goalamount2 << " " << shotamount1 << std::endl; 
            std::cout << std::endl;
@@ -73,19 +85,31 @@ int main()
         /*if (shotrating2 == 0){
             std::cout << "That shot was so simple and now a car alarm is going off" << std::endl;
         }*/
-        if (shotrating2 > saverating2) {
-             std::cout << "He walks up to take the shot..." << std::endl;
+       if (goalamount1 == 3 && goalamount2 <= 1 && shotamount1 >= 3 || 
+        goalamount1 == 3 && goalamount2 == 2 && shotamount1 >= 5 ||
+        goalamount1 == 2 && goalamount2 == 0 && shotamount1 >= 4 ||
+        goalamount1 == 2 && goalamount2 == 0 && shotamount1 >= 3){
+           std::cout << "This is to keep the team and fans hopes alive..." << std::endl;
            std::cout << std::endl;
            pause(3000);
+        }
+       if (goalamount1 == goalamount2 && shotamount1 >= 5){
+        std::cout << "If he makes this, he will send his team into the history books!" << std::endl;
+        std::cout << std::endl;
+        pause(3000);
+       }
+       else {
+        std::cout << "He walks up to take the shot..." << std::endl;
+           std::cout << std::endl;
+           pause(3000);
+       }
+        if (shotrating2 > saverating2) {
             goalamount2 = goalamount2 + 1;
             shotamount2 = shotamount2 + 1;
             std::cout << "GOAL for team 2, score is " << goalamount1 << " to " << goalamount2 << " " << shotamount2 << std::endl; 
             std::cout << std::endl;
         }
         else {
-             std::cout << "He walks up to take the shot..." << std::endl;
-           std::cout << std::endl;
-           pause(3000);
             shotamount2 = shotamount2 + 1;
             std::cout << "NO GOAL for team 2, score is " << goalamount1 << " to " << goalamount2 << " " << shotamount2 << std::endl; 
             std::cout << std::endl;
@@ -96,11 +120,17 @@ int main()
         std::cout << "Shots attempted for team 2: " << shotamount2 << std::endl;
         std::cout << std::endl;*/
         pause(2000);
-        if (shotamount2 >= 5 && goalamount2 > goalamount1 || goalamount2 == 3 && goalamount1 == 0 && shotamount2 >= 3){
+        if (goalamount2 > goalamount1 && shotamount1 >= 5|| 
+            goalamount2 == 3 && goalamount1 == 0 && shotamount1 >= 3 ||
+            goalamount2 == 3 && goalamount1 == 1 && shotamount1 >= 4){
             std::cout << "Team 2 has won " << goalamount2 << " to " << goalamount1  << std::endl;
             return 0;
         }
-        else if (goalamount1 >= 3 && goalamount2 == 0 && shotamount2 >= 3 || shotamount2 >= 5 && goalamount2 < goalamount1){
+        else if (goalamount1 >= 3 && goalamount2 == 0 && shotamount1 >= 3 ||
+             goalamount2 < goalamount1 && shotamount1 >=5|| 
+             goalamount1 >= 3 && goalamount2 <= 1 && shotamount1 >= 4 ||
+              goalamount1 == 4 && goalamount2 == 2 && shotamount1 >= 5 ||
+            goalamount1 == 2 && goalamount2 == 0 && shotamount1 >= 4){
             std::cout << "Team 1 has won " << goalamount1 << " to " << goalamount2  << std::endl;
             return 0;
         }
