@@ -29,10 +29,23 @@ int main()
         srand(static_cast<unsigned int>(time(0)));
         int shotrating1 = rand() % 21;
         int saverating1 = rand() % 21;
+        int shotdirection1 = rand() % 2;
+        std::string sshotdirection1 = "";
+
+        if (shotdirection1 == 0){
+        sshotdirection1 = "Left";
+       }
+       if (shotdirection1 == 1){
+        sshotdirection1 = "Middle";
+       }
+       if (shotdirection1 == 2){
+        sshotdirection1 = "Right";
+       }
         /*if (shotrating1 == 0){
             std::cout << "That shot was so simple and now a car alarm is going off" << std::endl;
         }*/
-       if (goalamount2 == 3 && goalamount1 == 0 && shotamount1 == 3 || goalamount2 == 3 && goalamount1 == 1 && shotamount1 >= 3){
+       if (goalamount2 == 3 && goalamount1 == 0 && shotamount1 == 3 || 
+        goalamount2 == 3 && goalamount1 == 1 && shotamount1 >= 3){
            std::cout << "This is to keep the team and fans hopes alive..." << std::endl;
            std::cout << std::endl;
            pause(3000);
@@ -47,16 +60,17 @@ int main()
            std::cout << std::endl;
            pause(3000);
        }
-        if (shotrating1 > saverating1) {  
+        if (shotrating1 > saverating1) {
+
             goalamount1 = goalamount1 + 1;
             shotamount1 = shotamount1 + 1;
-            std::cout << "GOAL for team 1, score is " << goalamount1 << " to " << goalamount2 << " " << shotamount1 << std::endl; 
+            std::cout << "GOAL, He shot " << sshotdirection1 << " for team 1, score is " << goalamount1 << " to " << goalamount2 << " " << shotamount1 << std::endl; 
             std::cout << std::endl;
         }
         else {
            // std::cout << "NO GOAL, shot was " << shotrating1 << " and save is " << saverating1 << std::endl;
            shotamount1 = shotamount1 + 1;
-           std::cout << "NO GOAL for team 1, score is " << goalamount1 << " to " << goalamount2 << " " << shotamount1 << std::endl; 
+           std::cout << "NO GOAL, He shot " << sshotdirection1 << " for team 1, score is " << goalamount1 << " to " << goalamount2 << " " << shotamount1 << std::endl; 
            std::cout << std::endl;
         }
         /*std::cout << std::endl;
@@ -82,9 +96,20 @@ int main()
         srand(static_cast<unsigned int>(time(0)));
         int shotrating2 = rand() % 21;
         int saverating2 = rand() % 21;
+        int shotdirection2 = rand() % 2;
+        std::string sshotdirection2 = "";
         /*if (shotrating2 == 0){
             std::cout << "That shot was so simple and now a car alarm is going off" << std::endl;
         }*/
+       if (shotdirection2 == 0){
+        sshotdirection2 = "left";
+       }
+       if (shotdirection2 == 1){
+        sshotdirection2 = "middle";
+       }
+       if (shotdirection2 == 2){
+        sshotdirection2 = "right";
+       }
        if (goalamount1 == 3 && goalamount2 <= 1 && shotamount1 >= 3 || 
         goalamount1 == 3 && goalamount2 == 2 && shotamount1 >= 5 ||
         goalamount1 == 2 && goalamount2 == 0 && shotamount1 >= 4 ||
@@ -106,12 +131,12 @@ int main()
         if (shotrating2 > saverating2) {
             goalamount2 = goalamount2 + 1;
             shotamount2 = shotamount2 + 1;
-            std::cout << "GOAL for team 2, score is " << goalamount1 << " to " << goalamount2 << " " << shotamount2 << std::endl; 
+            std::cout << "GOAL, he shot " << sshotdirection2 << " for team 2, score is " << goalamount1 << " to " << goalamount2 << " " << shotamount2 << std::endl; 
             std::cout << std::endl;
         }
         else {
             shotamount2 = shotamount2 + 1;
-            std::cout << "NO GOAL for team 2, score is " << goalamount1 << " to " << goalamount2 << " " << shotamount2 << std::endl; 
+            std::cout << "NO GOAL, he shot " << sshotdirection2 << " for team 2, score is " << goalamount1 << " to " << goalamount2 << " " << shotamount2 << std::endl; 
             std::cout << std::endl;
         }
         /*std::cout << std::endl;
