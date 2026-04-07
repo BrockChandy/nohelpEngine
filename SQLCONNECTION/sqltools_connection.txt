@@ -1,0 +1,30 @@
+To locally updated MySQL Workbench in VSCode
+
+1. install SQLTools Extension
+2. install SQLTools MySQL/MariaDB/TiDB Drivers Extension
+3. go to SQL Tools Connection Tab of left hand side
+4. Add a new connection
+5. select MySQL
+6. Fill out connetion info 
+    6a. For Password mode chose "Save in Plaintext in settings"
+    6b. For Conection timeout chose 30
+    6c. Leave the rest as default settings
+
+"sqltools.connections": [
+    {
+      "mysqlOptions": {
+        "authProtocol": "default",
+        "enableSsl": "Disabled"
+      },
+      "ssh": "Disabled",
+      "previewLimit": 50,
+      "server": "100.118.231.100",
+      "port": 3306,
+      "driver": "MySQL",
+      "name": "Brock FM Engine",
+      "database": "FM_Engine",
+      "username": "gabe",
+      "password": "Database_2026!",
+      "connectionTimeout": 30
+    }
+  ]
