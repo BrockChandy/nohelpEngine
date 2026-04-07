@@ -33,13 +33,13 @@ int main()
         std::string sshotdirection1 = "";
 
         if (shotdirection1 == 0){
-        sshotdirection1 = "Left";
+        sshotdirection1 = "left";
        }
        if (shotdirection1 == 1){
-        sshotdirection1 = "Middle";
+        sshotdirection1 = "middle";
        }
        if (shotdirection1 == 2){
-        sshotdirection1 = "Right";
+        sshotdirection1 = "right";
        }
         /*if (shotrating1 == 0){
             std::cout << "That shot was so simple and now a car alarm is going off" << std::endl;
@@ -50,10 +50,12 @@ int main()
            std::cout << std::endl;
            pause(3000);
        }
-       if (goalamount1 > goalamount2 && shotamount1 == 4 ||
+       else if (goalamount1 > goalamount2 && shotamount1 == 4 ||
          goalamount1 == 3 && goalamount2 == 1 && shotamount1 >= 3 ||
          goalamount1 == 2 && goalamount2 == 0 && shotamount1 >= 3){
         std::cout << "If he scores here, the fans will need to be held back from the pitch!" << std::endl;
+        std::cout << std::endl;
+        pause(3000);
        }
        else {
         std::cout << "He walks up to take the shot..." << std::endl;
@@ -61,16 +63,15 @@ int main()
            pause(3000);
        }
         if (shotrating1 > saverating1) {
-
             goalamount1 = goalamount1 + 1;
             shotamount1 = shotamount1 + 1;
-            std::cout << "GOAL, He shot " << sshotdirection1 << " for team 1, score is " << goalamount1 << " to " << goalamount2 << " " << shotamount1 << std::endl; 
+            std::cout << "GOAL, he shot " << sshotdirection1 << " for " << team1 << ", the score is " << goalamount1 << " to " << goalamount2 << " " << shotamount1 << std::endl; 
             std::cout << std::endl;
         }
         else {
            // std::cout << "NO GOAL, shot was " << shotrating1 << " and save is " << saverating1 << std::endl;
            shotamount1 = shotamount1 + 1;
-           std::cout << "NO GOAL, He shot " << sshotdirection1 << " for team 1, score is " << goalamount1 << " to " << goalamount2 << " " << shotamount1 << std::endl; 
+           std::cout << "NO GOAL, he shot " << sshotdirection1 << " for " << team1 <<", the score is " << goalamount1 << " to " << goalamount2 << " " << shotamount1 << std::endl; 
            std::cout << std::endl;
         }
         /*std::cout << std::endl;
@@ -80,11 +81,11 @@ int main()
         std::cout << std::endl;*/
         pause(2000);
         if (goalamount1 < goalamount2 && shotamount1 == 5){
-            std::cout << "Team 2 has won " << goalamount2 << " to " << goalamount1 << std::endl;
+            std::cout << team2 << " has won " << goalamount2 << " to " << goalamount1 << std::endl;
             return 0;
         }
         else if (goalamount1 >= 4 && goalamount2 <= 1 && shotamount1 >= 4 || goalamount1 >= 3 && goalamount2 <= 1 && shotamount1 == 5){
-            std::cout << "Team 1 has won " << goalamount1 << " to " << goalamount2 << std::endl;
+            std::cout << team1 << " has won " << goalamount1 << " to " << goalamount2 << std::endl;
             return 0;
         }
         else{
@@ -113,12 +114,13 @@ int main()
        if (goalamount1 == 3 && goalamount2 <= 1 && shotamount1 >= 3 || 
         goalamount1 == 3 && goalamount2 == 2 && shotamount1 >= 5 ||
         goalamount1 == 2 && goalamount2 == 0 && shotamount1 >= 4 ||
-        goalamount1 == 2 && goalamount2 == 0 && shotamount1 >= 3){
+        goalamount1 == 2 && goalamount2 == 0 && shotamount1 >= 3 ||
+        goalamount1 > goalamount2 && shotamount1 >= 5){
            std::cout << "This is to keep the team and fans hopes alive..." << std::endl;
            std::cout << std::endl;
            pause(3000);
         }
-       if (goalamount1 == goalamount2 && shotamount1 >= 5){
+       else if (goalamount1 == goalamount2 && shotamount1 >= 5){
         std::cout << "If he makes this, he will send his team into the history books!" << std::endl;
         std::cout << std::endl;
         pause(3000);
@@ -131,13 +133,14 @@ int main()
         if (shotrating2 > saverating2) {
             goalamount2 = goalamount2 + 1;
             shotamount2 = shotamount2 + 1;
-            std::cout << "GOAL, he shot " << sshotdirection2 << " for team 2, score is " << goalamount1 << " to " << goalamount2 << " " << shotamount2 << std::endl; 
+            std::cout << "GOAL, he shot " << sshotdirection2 << " for " << team2 <<", the score is " << goalamount1 << " to " << goalamount2 << " " << shotamount2 << std::endl; 
             std::cout << std::endl;
-        }
-        else {
-            shotamount2 = shotamount2 + 1;
-            std::cout << "NO GOAL, he shot " << sshotdirection2 << " for team 2, score is " << goalamount1 << " to " << goalamount2 << " " << shotamount2 << std::endl; 
-            std::cout << std::endl;
+            }
+            else {
+           shotamount2 = shotamount2 + 1;
+                std::cout << "NO GOAL, he shot " << sshotdirection2 << " for " << team2 << ", score is " << goalamount1 << " to " << goalamount2 << " " << shotamount2 << std::endl; 
+                std::cout << std::endl;
+            }
         }
         /*std::cout << std::endl;
         std::cout << "Goals scored for team 2: " << goalamount2 << std::endl;
@@ -148,7 +151,7 @@ int main()
         if (goalamount2 > goalamount1 && shotamount1 >= 5|| 
             goalamount2 == 3 && goalamount1 == 0 && shotamount1 >= 3 ||
             goalamount2 == 3 && goalamount1 == 1 && shotamount1 >= 4){
-            std::cout << "Team 2 has won " << goalamount2 << " to " << goalamount1  << std::endl;
+            std::cout << team2 << " has won " << goalamount2 << " to " << goalamount1  << std::endl;
             return 0;
         }
         else if (goalamount1 >= 3 && goalamount2 == 0 && shotamount1 >= 3 ||
@@ -156,14 +159,13 @@ int main()
              goalamount1 >= 3 && goalamount2 <= 1 && shotamount1 >= 4 ||
               goalamount1 == 4 && goalamount2 == 2 && shotamount1 >= 5 ||
             goalamount1 == 2 && goalamount2 == 0 && shotamount1 >= 4){
-            std::cout << "Team 1 has won " << goalamount1 << " to " << goalamount2  << std::endl;
+            std::cout << team1 << " has won " << goalamount1 << " to " << goalamount2  << std::endl;
             return 0;
         }
         else {
             continue;
         }
     }
-}
 }
 }
 }
